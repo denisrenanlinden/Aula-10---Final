@@ -46,13 +46,8 @@ def cadastrar_curso(request):
     if request.method == 'POST':
         form = CursoForm(request.POST)
         if form.is_valid():
-            # is_valid() Vai validar os dados, o Tokken CSRF, e criar um
-            # dicionário com os dados chamado cleaned_data
-            # Aqui estamos pegando o nome do curso
-            curso = form.cleaned_data['nome']
-            print(curso)
             form.save()
-            return redirect('alunos')  # Redireciona para a lista de alunos
+            return redirect('cursos')  
     else:
         form = CursoForm()
         dados = {
